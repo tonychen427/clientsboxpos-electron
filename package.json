@@ -1,0 +1,43 @@
+{
+  "name": "clientsboxpos",
+  "description": "Clientsbox - Point of sales",
+  "private": true,
+  "scripts": {
+    "start": "live-server",
+    "electron": "electron .",
+    "build": "gulp clean & electron-packager . --out=dist --app-version=$npm_package_version --prune --asar --overwrite --all"
+  },
+  "main": "electron.js",
+  "engines": {
+    "npm": ">=2.14.x"
+  },
+  "dependencies": {
+    "@angular/common": "2.0.0-rc.4",
+    "@angular/compiler": "2.0.0-rc.4",
+    "@angular/core": "2.0.0-rc.4",
+    "@angular/forms": "0.2.0",
+    "@angular/http": "2.0.0-rc.4",
+    "@angular/platform-browser": "2.0.0-rc.4",
+    "@angular/platform-browser-dynamic": "2.0.0-rc.4",
+    "@angular/router": "3.0.0-beta.2",
+    "@angular/router-deprecated": "2.0.0-rc.2",
+    "@angular/upgrade": "2.0.0-rc.4",
+    "core-js": "^2.4.0",
+    "electron-debug": "^1.0.1",
+    "express": "^4.14.0",
+    "node-thermal-printer": "0.0.24",
+    "reflect-metadata": "^0.1.3",
+    "rxjs": "5.0.0-beta.6",
+    "systemjs": "^0.19.31",
+    "typescript": "^1.8.10",
+    "zone.js": "^0.6.12"
+  },
+  "devDependencies": {
+    "del": "^2.2.1",
+    "electron-packager": "https://github.com/tonychen427/electron-packager.git",
+    "electron-prebuilt": "^1.2.7",
+    "gulp": "^3.9.1",
+    "gulp-typescript": "^2.13.6",
+    "live-server": "0.8.2"
+  }
+}
