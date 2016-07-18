@@ -1,31 +1,75 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, ElementRef, ViewEncapsulation, OnInit, AfterViewInit } from '@angular/core';
 import { ROUTER_DIRECTIVES } from '@angular/router';
 
-import { HeroService } from './hero.service';
-
 @Component({
-  selector: 'my-app',
-  template: `
-    <h1>{{title}}</h1>
-    <nav>
-      <a [routerLink]="['/dashboard']" routerLinkActive="active">Dashboard</a>
-      <a [routerLink]="['/heroes']" routerLinkActive="active">Heroes</a>
-    </nav>
-    <router-outlet></router-outlet>
-  `,
-  styleUrls: ['app/app.component.css'],
-  directives: [ROUTER_DIRECTIVES],
-  providers: [
-    HeroService
-  ]
+  selector: 'clientbox-pos-root',
+  templateUrl: 'app/shared/templates/base.layout.html',
+  styleUrls: ['app/shared/templates/bootstrap.css',
+              'app/shared/templates/base.layout.css', 
+              'app/shared/templates/_all-skins.css'],
+  encapsulation : ViewEncapsulation.None,
+  directives: [ROUTER_DIRECTIVES]
 })
 export class AppComponent {
-  title = 'Tour of Heroes';
+
+  contentHeight = 0;
+
+  @ViewChild('mainHeader') private _selectorMainHeader:ElementRef;
+  @ViewChild('mainFooter') private _selectorMainFooter:ElementRef;
+
+  constructor(private el:ElementRef) {
+
+  }
+  ngOnInit() {
+    //window.console.log("this.el.nativeElement");
+    //this.addClass(this.el.nativeElement,"hold-transition skin-blue sidebar-mini");
+    
+  }
+  ngAfterViewInit(){
+    //window.console.log("this.el.nativeElement");
+    //this.addClass(this.el.nativeElement,"hold-transition skin-blue sidebar-mini");
+    this.calculatorContentHeight();
+  }
+
+  calculatorContentHeight () {
+    var mainHeaderHeight = this._selectorMainHeader.nativeElement.clientHeight;
+    var mainFooterHeight = this._selectorMainFooter.nativeElement.clientHeight;
+    var neg = mainHeaderHeight + mainFooterHeight;    
+    this.contentHeight = window.innerHeight - neg;
+  }
+  
+  hasClass(ele, cls) {
+    return ele.className.match(new RegExp('(\\s|^)' + cls + '(\\s|$)'));
+  }
+  addClass(ele, cls) {
+    if (!this.hasClass(ele, cls)) ele.className += " " + cls;
+  }
+  removeClass(ele, cls) {
+    if (this.hasClass(ele, cls)) {
+        var reg = new RegExp('(\\s|^)' + cls + '(\\s|$)');
+        ele.className = ele.className.replace(reg, ' ');
+    }
+  }
+
+  // hasClass(el, className) {
+  //   if (el.classList)
+  //     return el.classList.contains(className)
+  //   else
+  //     return !!el.className.match(new RegExp('(\\s|^)' + className + '(\\s|$)'))
+  // }
+
+  // addClass(el, className) {
+  //   if (el.classList)
+  //     el.classList.add(className)
+  //   else if (!this.hasClass(el, className)) el.className += " " + className
+  // }
+
+  // removeClass(el, className) {
+  //   if (el.classList)
+  //     el.classList.remove(className)
+  //   else if (this.hasClass(el, className)) {
+  //     var reg = new RegExp('(\\s|^)' + className + '(\\s|$)')
+  //     el.className=el.className.replace(reg, ' ')
+  //   }
+  // }
 }
-
-
-/*
-Copyright 2016 Google Inc. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at http://angular.io/license
-*/

@@ -26,10 +26,11 @@ function onClosed() {
 function createMainWindow() {
 	const win = new electron.BrowserWindow({
 		width: 1200,
-		height: 800
+		height: 800,
+		resizable: false
 	});
 
-	//win.webContents.openDevTools()
+	win.webContents.openDevTools()
 	win.loadURL(`file://${__dirname}/index.html`);
 	win.on('closed', onClosed);
 
