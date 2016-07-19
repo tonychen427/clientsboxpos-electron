@@ -1,4 +1,4 @@
-<div class="hold-transition skin-blue sidebar-mini sidebar-collapse">
+<div class="hold-transition skin-blue sidebar-mini sidebar-collapse fixed" #clientsboxWrapper>
     <div class="wrapper">
         <!-- Main Header -->
         <header class="main-header" #mainHeader>
@@ -12,7 +12,7 @@
             <!-- Header Navbar -->
             <nav class="navbar navbar-static-top" role="navigation">
                 <!-- Sidebar toggle button-->
-                <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+                <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button" (click)="SideNavBarToggle()">
                     <span class="sr-only">Toggle navigation</span>
                 </a>
                 <!-- Navbar Right Menu -->

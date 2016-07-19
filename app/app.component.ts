@@ -21,7 +21,7 @@ export class AppComponent {
 
   @ViewChild('mainHeader') private _selectorMainHeader:ElementRef;
   @ViewChild('mainFooter') private _selectorMainFooter:ElementRef;
-
+  @ViewChild('clientsboxWrapper') private _selectorClientboxWrapper:ElementRef;
   constructor(private el:ElementRef) {
 
   }
@@ -36,11 +36,22 @@ export class AppComponent {
     this.calculatorContentHeight();
   }
 
+  SideNavBarToggle () {
+    if(this.hasClass(this._selectorClientboxWrapper.nativeElement,'sidebar-collapse')){
+      this.removeClass(this._selectorClientboxWrapper.nativeElement,'sidebar-collapse');
+      this.addClass(this._selectorClientboxWrapper.nativeElement,'sidebar-open');
+    }else{
+      this.removeClass(this._selectorClientboxWrapper.nativeElement,'sidebar-open');
+      this.addClass(this._selectorClientboxWrapper.nativeElement,'sidebar-collapse');
+    }
+  }
   calculatorContentHeight () {
-      var mainHeaderHeight = this._selectorMainHeader.nativeElement.clientHeight;
-      var mainFooterHeight = this._selectorMainFooter.nativeElement.clientHeight;
-      var neg = mainHeaderHeight + mainFooterHeight;    
-      this.contentHeight = window.innerHeight - neg;
+    var mainHeaderHeight = this._selectorMainHeader.nativeElement.clientHeight;
+    var mainFooterHeight = this._selectorMainFooter.nativeElement.clientHeight;
+    var neg = mainHeaderHeight + mainFooterHeight - 
+              (this.hasClass(this._selectorClientboxWrapper.nativeElement,"fixed") ? 50 : 0);
+
+    this.contentHeight = window.innerHeight - neg;
   }
   
   hasClass(ele, cls) {
