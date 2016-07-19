@@ -1,0 +1,11 @@
+#registerWrapper {
+
+}
+#registerWrapper > div {
+	display: inline-table;
+	width: 49%;
+}
+.registerPanel {
+	border: 1px solid #e3e3e3;
+	background-color: #f5f5f5;
+}

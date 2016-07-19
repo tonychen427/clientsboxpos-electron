@@ -1,16 +1,21 @@
 import { provideRouter, RouterConfig }  from '@angular/router';
 
 import { DashboardComponent } from './components/dashboard/dashboard.component';
-
+import { RegisterComponent } from './components/register/register.component';
 const routes: RouterConfig = [
   {
     path: '',
-    redirectTo: '/dashboard',
+    redirectTo: '/register',
     pathMatch: 'full'
   },
   {
     path: 'dashboard',
     component: DashboardComponent
+  },
+  {
+    path: 'register',
+    component: RegisterComponent
+
   }
 ];
 

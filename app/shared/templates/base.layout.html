@@ -205,7 +205,7 @@
             <!-- /.sidebar -->
         </aside>
         <!-- Content Wrapper. Contains page content -->
-        <div class="content-wrapper" [style.height.px]="contentHeight">
+        <div class="content-wrapper" [style.height.px]="contentHeight" (window:resize)="onResize($event)">
             <!-- Main content -->
             <section class="content">
               <router-outlet></router-outlet>

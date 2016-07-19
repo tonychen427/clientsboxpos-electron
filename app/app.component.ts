@@ -35,7 +35,9 @@ export class AppComponent {
     //this.addClass(this.el.nativeElement,"hold-transition skin-blue sidebar-mini");
     this.calculatorContentHeight();
   }
-
+  onResize(event) {
+      this.calculatorContentHeight();
+  }
   SideNavBarToggle () {
     if(this.hasClass(this._selectorClientboxWrapper.nativeElement,'sidebar-collapse')){
       this.removeClass(this._selectorClientboxWrapper.nativeElement,'sidebar-collapse');
