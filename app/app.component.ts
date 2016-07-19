@@ -1,5 +1,6 @@
 import { Component, ViewChild, ElementRef, ViewEncapsulation, OnInit, AfterViewInit } from '@angular/core';
 import { ROUTER_DIRECTIVES } from '@angular/router';
+import {TimerWrapper} from '@angular/core/src/facade/async';
 
 @Component({
   selector: 'clientbox-pos-root',
@@ -32,10 +33,13 @@ export class AppComponent {
   }
 
   calculatorContentHeight () {
-    var mainHeaderHeight = this._selectorMainHeader.nativeElement.clientHeight;
-    var mainFooterHeight = this._selectorMainFooter.nativeElement.clientHeight;
-    var neg = mainHeaderHeight + mainFooterHeight;    
-    this.contentHeight = window.innerHeight - neg;
+
+    TimerWrapper.setTimeout(() => {  
+      var mainHeaderHeight = this._selectorMainHeader.nativeElement.clientHeight;
+      var mainFooterHeight = this._selectorMainFooter.nativeElement.clientHeight;
+      var neg = mainHeaderHeight + mainFooterHeight;    
+      this.contentHeight = window.innerHeight - neg;
+    }, 0);
   }
   
   hasClass(ele, cls) {
