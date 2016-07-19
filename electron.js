@@ -30,7 +30,7 @@ function createMainWindow() {
 		//resizable: false
 	});
 
-	//win.webContents.openDevTools()
+	win.webContents.openDevTools()
 	win.loadURL(`file://${__dirname}/index.html`);
 	win.on('closed', onClosed);
 
