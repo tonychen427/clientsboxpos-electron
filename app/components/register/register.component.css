@@ -1,11 +1,28 @@
 #registerWrapper {
 
 }
+
 #registerWrapper > div {
 	display: inline-table;
 	width: 49%;
 }
-.registerPanel {
+
+.itemsWrapper > li{
+	list-style: none;
+	display: inline-block;
+	width: 150px;
+	height: 175px;
 	border: 1px solid #e3e3e3;
 	background-color: #f5f5f5;
+	margin: 0px 10px 10px 0px;
+	text-align: center;
+}
+
+.itemsWrapper > li:hover {
+	border: 2px solid #ec971f;
+}
+
+#registerItemsWrapper tr  td{
+	width: 50%;
+	vertical-align: top;
 }
